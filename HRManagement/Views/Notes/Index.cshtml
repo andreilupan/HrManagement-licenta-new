@@ -1,0 +1,43 @@
+﻿@model HRManagement.ViewModels.Notes.NotesIndexViewModel
+@{
+    ViewBag.Title = "Notes";
+}
+
+<h2>Notes</h2>
+<br />
+
+  <div class="col-md-5">
+    @using (Html.BeginForm("Create", "Notes", FormMethod.Post, new { @class = "form-horizontal" }))
+    {
+        <div class="form-group">
+            @Html.TextAreaFor(x => new HRManagement.ViewModels.Notes.NotesListItemViewModel().Text, new { rows = 10, columns = 40 })
+            <input type="submit" class="btn btn-default" value="Add note" />
+        </div>
+    }
+</div>
+<div class="col-md-7">
+    <table class="table table-responsive table-condensed table-striped table-bordered">
+
+        @foreach (var item in Model.Notes)
+        {
+            <tr>
+                <td>@item.Text</td>
+                <td>
+                    @if (item.Active)
+                {
+                        @Html.ActionLink("Unpin note", "SetStatus", "Notes", new { active = false, id = @item.Id }, new { @class = "btn btn-warning btn-sm" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Pin note", "SetStatus", "Notes", new { active = true, id = @item.Id }, new { @class = "btn btn-success btn-sm" })
+                    }
+                </td>
+
+                <td>
+                    @Html.ActionLink("Delete note", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </table>
+
+</div>

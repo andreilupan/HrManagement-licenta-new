@@ -1,0 +1,79 @@
+﻿@model HRManagement.ViewModels.Training.TrainingIndexDataViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<p>
+    @Html.ActionLink("New", "Create", null, new { @class = "btn btn-default" })
+    <button onclick="window.location='/Training/ExportTrainings';" class="btn btn-default">Export to Excel</button>
+</p>
+<h2>List of trainings</h2>
+
+
+<table class="table table table-striped table-responsive">
+    <tr> 
+        <th></th>
+        <th>
+            @Html.DisplayName("Name")
+        </th>
+        <th>
+            @Html.DisplayName("Start Date")
+        </th>
+        <th>
+            @Html.DisplayName("End Date")
+        </th>
+        <th>
+            @Html.DisplayName("Status")
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Trainings)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-primary btn-sm" })
+                @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm" })
+                @Html.ActionLink("Employees Assigned", "EmployeesAssignedToTraining", "Training", new { trainingId = @item.Id }, new { @class = "btn btn-success btn-sm" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+        </tr>
+    }
+</table>
+
+<br />
+
+
+@if (Model.EmployeesAssignedToTrainings != null)
+{
+    <h3>List of employees assigned to training</h3>
+    <br />
+    <table class="table table-condensed table-responsive table-hover table-striped">
+        <tr>
+            <th>@Html.DisplayName("First Name")</th>
+            <th>@Html.DisplayName("Middle Name")</th>
+            <th>@Html.DisplayName("Last Name")</th>
+        </tr>
+        @foreach (var assignedEmployee in Model.EmployeesAssignedToTrainings)
+        {
+            <tr>
+                <td>@assignedEmployee.EmployeeFirstName</td>
+                <td>@assignedEmployee.EmployeeMiddleName</td>
+                <td>@assignedEmployee.EmployeeLastName</td>
+            </tr>
+        }
+    </table>
+}
+

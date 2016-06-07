@@ -1,0 +1,42 @@
+﻿@model IEnumerable<HRManagement.ViewModels.Documents.DocumentsDataIndexViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Documents</h2>
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayName("Name")
+        </th>
+    </tr>
+
+
+@foreach (var item in Model.EmployeesForDocuments)
+{
+    <tr>
+
+        <td>
+            @Html.ActionLink("Upload curriculum vitae", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Download curriculum vitae", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Upload contract", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+            @Html.ActionLink("Download contract", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Position.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Project.Name)
+        </td>
+    </tr>
+}
+
+</table>
+
+
+

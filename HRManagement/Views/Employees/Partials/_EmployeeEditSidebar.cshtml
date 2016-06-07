@@ -1,0 +1,12 @@
+﻿@model HRManagement.Models.Partials.EmployeeEditSidebarViewModel
+
+<div>
+    <ul class="nav nav-tabs nav-justified">
+        <li role="presentation" class="@(Model.ActiveTab == "employee" ? "active" : "")"><a href="/Employees/Edit/@Model.EmployeeId">Personal information</a></li>
+        <li role="presentation" class="@(Model.ActiveTab == "contactInformation" ? "active" : "")"><a href="/Employees/@Model.EmployeeId/EditContactInformation">Contact information</a></li>
+        <li role="presentation" class="@(Model.ActiveTab == "employmentInformation" ? "active" : "")"><a href="/Employees/@Model.EmployeeId/EditEmploymentInformation">Employment information</a></li>
+        <li role="presentation" class="@(Model.ActiveTab == "financialInformation" ? "active" : "")"><a href="/Employees/@Model.EmployeeId/EditFinancialInformation">Financial information</a></li>
+    </ul>
+</div>
+<br/>
+

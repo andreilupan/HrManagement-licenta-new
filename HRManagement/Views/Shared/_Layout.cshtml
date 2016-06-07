@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - HRManagement</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/sidebar.js" ></script>
+    <script src="~/Scripts/notifications.js"></script>
+</head>
+<body>
+
+
+    <div id="wrapper">
+        <div class="overlay"></div>
+
+        <!-- Sidebar -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+            <ul class="nav sidebar-nav">
+                <li>
+                    @Html.Partial("_LoginPartial")
+                    @Html.ActionLink("HRManagement", "Index", "Home", new { area = "" }, new { @class = "navbar navbar-brand", @style = "padding-top: 30px;padding-bottom: 0px;" })
+                </li>
+                <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                <li>@Html.ActionLink("Employees", "Index", "Employees")</li>
+                <li>@Html.ActionLink("Positions", "Index", "Positions")</li>
+                <li>@Html.ActionLink("Trainings", "Index", "Training")</li>
+                <li>@Html.ActionLink("Projects", "Index", "Project")</li>
+                <li>@Html.ActionLink("Notes", "Index", "Notes")</li>
+                <li>@Html.ActionLink("Documents", "Index", "Documents")</li>
+
+            </ul>
+        </nav>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                <span class="hamb-top"></span>
+                <span class="hamb-middle"></span>
+                <span class="hamb-bottom"></span>
+            </button>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        @RenderBody()
+                        <hr />
+                        <footer>
+                            <p>&copy;HRManagement</p>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

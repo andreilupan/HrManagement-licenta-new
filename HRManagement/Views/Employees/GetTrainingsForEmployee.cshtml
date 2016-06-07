@@ -1,0 +1,52 @@
+﻿@model HRManagement.ViewModels.Employee.GetTrainingForEmployeeViewModel
+@{
+    ViewBag.Title = "Trainings";
+}
+
+<h2>Details</h2>
+
+@Html.Partial("~/Views/Employees/Partials/_EmployeeDetailsSidebar.cshtml", new HRManagement.Models.Partials.EmployeeDetailsSidebarViewModel { ActiveTab = "trainings", EmployeeId = Model.EmployeeId })
+
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Name")
+            </th>
+            <th>
+                @Html.DisplayName("StartDate")
+            </th>
+            <th>
+                @Html.DisplayName("EndDate")
+            </th>
+            <th>
+                @Html.DisplayName("Status")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Trainings)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+<p>
+    @Html.ActionLink("Edit","Edit","Training", new { id = Model.Trainings.Select(x => x.Id) }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info" })
+</p>

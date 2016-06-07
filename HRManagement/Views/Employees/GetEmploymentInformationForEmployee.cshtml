@@ -1,0 +1,56 @@
+﻿@model HRManagement.ViewModels.Employee.GetEmploymentInformationForEmployeeViewModel
+
+@{
+    ViewBag.Title = "Employment information";
+}
+
+<h2>Details</h2>
+
+@Html.Partial("~/Views/Employees/Partials/_EmployeeDetailsSidebar.cshtml", new HRManagement.Models.Partials.EmployeeDetailsSidebarViewModel { ActiveTab = "employmentInformation", EmployeeId = Model.EmployeeId })
+
+<div>
+
+    <div>
+        <h4>Employment information</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.EmploymentDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EmploymentDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.JubileeDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.JubileeDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateForFormalProfessionalCompetence)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateForFormalProfessionalCompetence)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateForFormalTeachingSkills)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateForFormalTeachingSkills)
+            </dd>
+
+        </dl>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "EditEmploymentInformation", new { id = Model.EmployeeId }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info" })
+</p>

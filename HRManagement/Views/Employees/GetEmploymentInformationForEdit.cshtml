@@ -1,0 +1,71 @@
+﻿
+@model HRManagement.ViewModels.Employee.EditEmploymentInfomationForEmployeeViewModel
+
+@{
+    ViewBag.Title = "Employment information";
+}
+
+<h2>Edit</h2>
+
+@Html.Partial("~/Views/Employees/Partials/_EmployeeEditSidebar.cshtml", new HRManagement.Models.Partials.EmployeeEditSidebarViewModel { ActiveTab = "employmentInformation", EmployeeId = Model.EmployeeId })
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Edit Employment information</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmploymentDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" name="EmploymentDate" value="@Model.EmploymentDate.ToString("yyyy-MM-dd")" class="form-control" />
+                @Html.ValidationMessageFor(model => model.EmploymentDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.JubileeDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" name="JubileeDate" value="@Model.JubileeDate.ToString("yyyy-MM-dd")" class="form-control" />
+                @Html.ValidationMessageFor(model => model.JubileeDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateForFormalProfessionalCompetence, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" name="DateForFormalProfessionalCompetence" value="@Model.DateForFormalProfessionalCompetence.ToString("yyyy-MM-dd")" class="form-control" />
+                @Html.ValidationMessageFor(model => model.DateForFormalProfessionalCompetence, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DateForFormalTeachingSkills, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="date" name="DateForFormalTeachingSkills" value="@Model.DateForFormalTeachingSkills.ToString("yyyy-MM-dd")" class="form-control" />
+                @Html.ValidationMessageFor(model => model.DateForFormalTeachingSkills, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-success" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info" })
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

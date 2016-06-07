@@ -1,0 +1,55 @@
+﻿@model HRManagement.ViewModels.Employee.GetFinancialInformationForEmployeeViewModel
+
+@{
+    ViewBag.Title = "Financial information";
+}
+
+<h2>Details</h2>
+
+@Html.Partial("~/Views/Employees/Partials/_EmployeeDetailsSidebar.cshtml", new HRManagement.Models.Partials.EmployeeDetailsSidebarViewModel { ActiveTab = "financialInformation", EmployeeId = Model.EmployeeId })
+
+<div>
+
+    <div>
+        <h4>Financial information</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Salary)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Salary)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.NextSalaryIncrease)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NextSalaryIncrease)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AccountNumber)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.AccountNumber)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Bank)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Bank)
+            </dd>
+
+           
+
+        </dl>
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "EditFinancialInformation", new { id = Model.EmployeeId }, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info" })
+</p>
